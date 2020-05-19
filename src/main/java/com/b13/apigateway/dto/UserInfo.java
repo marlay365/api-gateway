@@ -1,5 +1,6 @@
 package com.b13.apigateway.dto;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 

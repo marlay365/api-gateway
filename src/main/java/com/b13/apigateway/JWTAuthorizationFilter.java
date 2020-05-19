@@ -39,7 +39,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter{
 				UsernamePasswordAuthenticationToken tokrn= new UsernamePasswordAuthenticationToken(username, null, authorities.stream().map(x-> new SimpleGrantedAuthority(x.get("authority"))).collect(Collectors.toList()));
 				SecurityContextHolder.getContext().setAuthentication(tokrn);
 				filterChain.doFilter(request, response);
-			}catch(JwtException e) {
+			} catch(JwtException e) {
 				throw new IllegalStateException("Token cannot be trusted");
 			}
 	}
