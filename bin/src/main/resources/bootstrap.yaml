@@ -6,14 +6,12 @@ spring:
       server:
         git:
           uri: https://github.com/jedibig/ecommerce-config-properties.git
-  
 eureka:
   client:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://${eureka-host:127.0.0.1}:${eureka-port:8761}/eureka
+      defaultZone: http://${eureka-host:127.0.0.1}:${eureka-port:8761}/eureka 
 
 server:
   port: ${portnum:8888}
-  
