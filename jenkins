@@ -7,19 +7,27 @@ pipeline {
 	  jdk "java"
 	  
    }
+   triggers {
+       pollSCM('    *')
+   }
+
+     options { 
+         buildDiscarder(logRotator(numToKeepStr: '1')) 
+    }
 
    stages {
    
    stage('Clean'){
-   
-	sh 'mvn clean';
-   
+   	steps{
+   		sh 'mvn clean';
+   	}
    
    }
    stage("Github code"){
       // Get some code from a GitHub repository
-   
-    git 'https://github.com/marlay365/api-gateway.git'
+   		steps{
+   			git 'https://github.com/marlay365/api-gateway.git'
+   		}
 	}
       stage('Build') {
          steps {
