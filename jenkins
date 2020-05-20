@@ -19,7 +19,7 @@ pipeline {
    stage("Github code"){
       // Get some code from a GitHub repository
    
-    git 'https://github.com/marlay365/SecondProject.git'
+    git 'https://github.com/marlay365/api-gateway.git'
 	}
       stage('Build') {
          steps {
