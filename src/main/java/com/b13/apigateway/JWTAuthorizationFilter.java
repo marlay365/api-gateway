@@ -26,15 +26,17 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter{
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
+		System.out.println("I came over here");
 		String reqToken=request.getHeader("Authorization");
 		if(reqToken==null ||reqToken.isEmpty()) {
 			filterChain.doFilter(request, response);
 			return;
 		}
 		try {
-				Jws<Claims> jws=Jwts.parser().setSigningKey(Keys.hmacShaKeyFor("MarcHasBUilTthisCraZyKeyYall".getBytes())).parseClaimsJws(reqToken);
+				Jws<Claims> jws=Jwts.parser().setSigningKey(Keys.hmacShaKeyFor("MarcHasBUilTthisCraZycOmpLicaTeDKeyYall".getBytes())).parseClaimsJws(reqToken);
 				Claims claims=jws.getBody();
 				String username= claims.getSubject();
+				System.out.println(username);
 				List<Map<String,String>> authorities=(List<Map<String, String>>) claims.get("authorities");
 				UsernamePasswordAuthenticationToken tokrn= new UsernamePasswordAuthenticationToken(username, null, authorities.stream().map(x-> new SimpleGrantedAuthority(x.get("authority"))).collect(Collectors.toList()));
 				SecurityContextHolder.getContext().setAuthentication(tokrn);

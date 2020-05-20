@@ -48,8 +48,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 			Authentication authResult) throws IOException, ServletException {
 		String token=Jwts.builder().setSubject(((User) authResult.getPrincipal()).getUsername()).claim("authorities", authResult.getAuthorities())
 		.setIssuedAt(new Date()).setExpiration(java.sql.Date.valueOf(LocalDate.now().plusWeeks(1)))
-		.signWith(Keys.hmacShaKeyFor("MarcHasBUilTthisCraZyKeyYall".getBytes()))
+		.signWith(Keys.hmacShaKeyFor("MarcHasBUilTthisCraZycOmpLicaTeDKeyYall".getBytes()))
 		.compact();
+		System.out.println(((User) authResult.getPrincipal()).getUsername());
 		response.addHeader("Authorization", token);
 	}
 }

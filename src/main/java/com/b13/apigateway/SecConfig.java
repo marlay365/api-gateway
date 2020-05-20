@@ -32,11 +32,6 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(11);
 		return encoder;
 	}
-	
-	@Override
-	protected AuthenticationManager authenticationManager() throws Exception {
-		return super.authenticationManager();
-	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
